@@ -20,6 +20,7 @@ public class QuestionController {
 
     @GetMapping("allQuestions")
     public ResponseEntity<List<Questions>> getAllQuestions(){
+
         return questionService.getAllQuestions();
     }
 
@@ -30,7 +31,7 @@ public class QuestionController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<String> addQuestion(@RequestBody Questions questions){  //
+    public String addQuestion(@RequestBody Questions questions){  //
         return questionService.addQuestions(questions);
 
     }

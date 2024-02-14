@@ -1,12 +1,11 @@
 package com.glory.quizApp.service;
 
-import com.glory.quizApp.Dao.QuestionDao;
+import com.glory.quizApp.dao.QuestionDao;
 import com.glory.quizApp.model.Questions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,15 +37,15 @@ public class QuestionService {
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity<String> addQuestions(Questions questions) {
+    public String addQuestions(Questions questions) {
         try {
             questionDao.save(questions);
-            return new ResponseEntity<>("success", HttpStatus.CREATED);
+            return String.valueOf(new ResponseEntity<>("success", HttpStatus.CREATED));
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
+        return "success";
 
     }
 }
